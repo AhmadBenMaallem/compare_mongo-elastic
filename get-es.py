@@ -10,12 +10,17 @@ load_dotenv()
 
 ES_HOST = os.getenv("ES_HOST")
 ES_INDEX = os.getenv("ES_INDEX")
-#ES_HOST = "http://192.168.100.6:9200"
-#ES_INDEX = "nuxeo"
+#ES_AUTH# ES_USER = os.getenv("ES_USER")
+#ES_AUTH# ES_PASSWORD = os.getenv("ES_PASSWORD")
+
 
 # === RÉCUPÉRATION DES ECM:UUID D'ELASTICSEARCH ===
 def get_es_uuids():
-    es = Elasticsearch(ES_HOST, headers={"Content-Type": "application/json"})
+    es = Elasticsearch(
+        ES_HOST,
+    #ES_AUTH#   basic_auth=(ES_USER, ES_PASSWORD),
+        headers={"Content-Type": "application/json"}
+    )
     uuids = set()
     results = scan(
         es,
