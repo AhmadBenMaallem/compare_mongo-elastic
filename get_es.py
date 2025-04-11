@@ -9,9 +9,10 @@ load_dotenv()
 # === CONFIGURATION ===
 
 ES_HOST = os.getenv("ES_HOST")
-ES_INDEX = os.getenv("ES_INDEX")
 #ES_AUTH# ES_USER = os.getenv("ES_USER")
 #ES_AUTH# ES_PASSWORD = os.getenv("ES_PASSWORD")
+ES_INDEX = os.getenv("ES_INDEX")
+
 
 
 # === RÉCUPÉRATION DES ECM:UUID D'ELASTICSEARCH ===

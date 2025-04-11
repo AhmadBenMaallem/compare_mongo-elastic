@@ -1,4 +1,4 @@
-# 🔍 Comparateur de UUID entre MongoDB et Elasticsearch
+# 🔍 Comparateur de UUID entre MongoDB et Elasticsearch/Opensearch
 
 Ce script Python compare les documents présents dans une collection MongoDB avec ceux présents dans un index Elasticsearch, en se basant sur le champ `ecm:uuid` (ou `ecm:id` côté Mongo).
 
@@ -63,7 +63,7 @@ Tu devrais voir un préfixe `(myenv)` au début de ta ligne de commande.
 ## ⚙️ Étape 4 : Installation des dépendances
 
 ```bash
-pip install pymongo elasticsearch==7.9.1 python-dotenv
+pip install pymongo elasticsearch==7.9.1 python-dotenv opensearch-py
 ```
 
 ---
@@ -81,14 +81,24 @@ MONGO_COLLECTION=default
 # Connexion Elasticsearch
 ES_HOST=http://localhost:9200
 ES_INDEX=nuxeo
+ES_USER=elastic
+ES_PASSWORD=changeme
 ```
 
 ---
 
 ## 🚀 Étape 6 : Lancer le script
 
+### Mongodb / Elasticsearch
+
 ```bash
 python compare_mongo-elastic.py
+```
+
+### Mongodb / Opensearch
+
+```bash
+python compare_mongo-opensearch.py
 ```
 
 Cela va :
@@ -136,6 +146,11 @@ Ce script se connecte à la base MongoDB (définie dans le fichier `.env`) et af
 
 ### 🔹 `get-es.py`
 Ce script se connecte à l'index Elasticsearch (défini dans le fichier `.env`) et affiche le nombre total de documents indexés.
+
+Ces scripts sont utiles pour vérifier la volumétrie globale avant ou après une synchronisation.
+
+### 🔹 `get-os.py`
+Ce script se connecte à l'index Opensearch (défini dans le fichier `.env`) et affiche le nombre total de documents indexés.
 
 Ces scripts sont utiles pour vérifier la volumétrie globale avant ou après une synchronisation.
 
